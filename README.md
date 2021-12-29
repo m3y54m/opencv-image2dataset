@@ -2,4 +2,14 @@
 
 Slice a single image of Persian digits into multiple pieces and create a dataset from them.
 
-![](img/image.png)
+## Input
+
+![](img/input.png)
+
+## Output
+
+![](img/output.png)
+
+The result is a dataset of images of digits extracted from the input image:
+
+[`data/dataset.npz`](data/dataset.npz)

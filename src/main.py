@@ -7,9 +7,9 @@ src_path = os.path.dirname(os.path.abspath(__file__))
 # Base path: /
 base_path = os.path.join(os.path.dirname(src_path))
 # Image path: /img/image.png
-image_path = os.path.join(os.path.join(base_path, "img"), "image.png")
-# Dataset path: /dataset/dataset.npz
-dataset_path = os.path.join(os.path.join(base_path, "dataset"), "dataset.npz")
+image_path = os.path.join(os.path.join(base_path, "img"), "input.png")
+# Dataset path: /data/dataset.npz
+dataset_path = os.path.join(os.path.join(base_path, "data"), "dataset.npz")
 
 image = cv2.imread(image_path)
 
@@ -112,5 +112,6 @@ cv2.imshow(f"outputImage", outputImage)
 # Show the last image of the dataset
 cv2.imshow(f"{datasetLabels[49]}", datasetImages[49])
 
+cv2.imwrite(f"{base_path}/img/output.png", outputImage)
 
 cv2.waitKey(0)
