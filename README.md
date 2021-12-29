@@ -1,2 +1,5 @@
-# opencv-image2dataset
-Slice a single image into multiple pieces and create a dataset from them
+# OpenCV Image to Dataset Converter
+
+Slice a single image of Persian digits into multiple pieces and create a dataset from them.
+
+![](img/image.png)
