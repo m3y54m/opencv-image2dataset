@@ -6,7 +6,7 @@ import numpy as np
 src_path = os.path.dirname(os.path.abspath(__file__))
 # Base path: /
 base_path = os.path.join(os.path.dirname(src_path))
-# Image path: /img/image.png
+# Image path: /img/input.png
 image_path = os.path.join(os.path.join(base_path, "img"), "input.png")
 # Dataset path: /data/dataset.npz
 dataset_path = os.path.join(os.path.join(base_path, "data"), "dataset.npz")
