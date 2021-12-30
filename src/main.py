@@ -3,20 +3,18 @@ import os
 import numpy as np
 
 # Source path: /src/
-src_path = os.path.dirname(os.path.abspath(__file__))
+SRC_PATH = os.path.dirname(os.path.abspath(__file__))
 # Base path: /
-base_path = os.path.join(os.path.dirname(src_path))
+BASE_PATH = os.path.join(os.path.dirname(SRC_PATH))
 # Image path: /img/input.png
-image_path = os.path.join(os.path.join(base_path, "img"), "input.png")
+IMAGE_PATH = os.path.join(os.path.join(BASE_PATH, "img"), "input.png")
 # Dataset path: /data/dataset.npz
-dataset_path = os.path.join(os.path.join(base_path, "data"), "dataset.npz")
-
-image = cv2.imread(image_path)
+DATASET_PATH = os.path.join(os.path.join(BASE_PATH, "data"), "dataset.npz")
 
 MAX_CONTOUR_AREA = 500
 
 # Load image
-inputImage = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+inputImage = cv2.imread(IMAGE_PATH, cv2.IMREAD_GRAYSCALE)
 # Extending the image for 10 pixels in each direction with color (value) of 255 (white)
 inputImage = cv2.copyMakeBorder(
     inputImage, 10, 10, 10, 10, cv2.BORDER_CONSTANT, value=255
@@ -102,16 +100,24 @@ for item in range(len(digitsPositionList)):
     )
 
 # Save the dataset in a file
-np.savez_compressed(dataset_path, datasetImages, datasetLabels)
+np.savez_compressed(DATASET_PATH, images=datasetImages, labels=datasetLabels)
+
+# You can load the dataset from the file using np.load method:
+#
+# data = np.load(DATASET_PATH)
+# datasetImages = data['images']
+# datasetLabels = data['labels']
 
 print(f"Number of valid digits found: {numberOfValidShapes}")
 
+# Show images in separate windows
 cv2.imshow(f"inputImage", inputImage)
 cv2.imshow(f"processedImage", image)
 cv2.imshow(f"outputImage", outputImage)
 # Show the last image of the dataset
 cv2.imshow(f"{datasetLabels[49]}", datasetImages[49])
 
-cv2.imwrite(f"{base_path}/img/output.png", outputImage)
+# Save the ouput image in a file
+cv2.imwrite(f"{BASE_PATH}/img/output.png", outputImage)
 
 cv2.waitKey(0)
