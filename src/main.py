@@ -39,7 +39,8 @@ digitsImageList = []
 
 # Loop over all contours (images of persian digits)
 for contour in contours:
-    # Find the center of the contour using moments
+    # https://docs.opencv.org/4.x/dd/d49/tutorial_py_contour_features.html
+    # Find the center of the contour using moments (You can also use cv2.boundingRect or cv2.minEnclosingCircle and so on)
     moment = cv2.moments(contour)
 
     if moment["m00"] != 0:
